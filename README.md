@@ -1,2 +1,10 @@
 # ResourcesMonitor
-This is a GUI Application scanning processes in the Resources Monitor, to detect what processes are having rapid change of cpu&amp; ram usage within a period. Basically it is use for malware detection, to find out what application trying to steal your files from your PC.
+This is a GUI Application scanning processes in the Resources Monitor ( TaskManager -> Performance -> Open Resources Monitor)
+
+it can detect a list of proccess that having rapid surge of PC Usage ( CPU Usage & RAM Usage ) in period of 5ms. 
+
+Basically it is a method for <b>malware detection</b>, the malware like ransomware is copying your files and encrypt it, once it is taking this action, its ram & cpu usage will have <b>rapid surge of change</b>.
+
+This GUI application will display a ProcessID List that having this kind of malware behaviour.
+
+
