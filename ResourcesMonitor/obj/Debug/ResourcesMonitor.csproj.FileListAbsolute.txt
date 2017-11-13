@@ -1,0 +1,10 @@
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\bin\Debug\ResourcesMonitor.exe.config
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\bin\Debug\ResourcesMonitor.exe
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\bin\Debug\ResourcesMonitor.pdb
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.Form1.resources
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.Properties.Resources.resources
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.csproj.GenerateResource.Cache
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.exe
+C:\Users\User\Documents\OpenSources Project\ResourcesMonitor\ResourcesMonitor\obj\Debug\ResourcesMonitor.pdb
