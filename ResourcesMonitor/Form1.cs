@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ResourcesMonitor;
 
 namespace ResourcesMonitor
 {
@@ -26,27 +27,31 @@ namespace ResourcesMonitor
         {
             ResourcesMonitor resourcesMonitor = new ResourcesMonitor();
 
+            int period = Convert.ToInt32(tb_period.Text);
+
             while (true)
             {
                 List<ProccessDetail> pdArrBefore = resourcesMonitor.getProccessesDetail();
-                await Task.Delay(500);
+                await Task.Delay(period);
                 List<ProccessDetail> pdArrAfter = resourcesMonitor.getProccessesDetail();
 
-                List<ProccessDetail> result = resourcesMonitor.getProccessesHaveRapidChangeUsage(pdArrBefore, pdArrAfter);
+                List<ProccessDetail> bothUsage = resourcesMonitor.getProccessesHaveRapidChangeUsage(pdArrBefore, pdArrAfter);
+                List<ProccessDetail> ramUsage = resourcesMonitor.getProccessesHaveRapidChangeUsage(pdArrBefore, pdArrAfter, ResourcesMonitor.UsageCondition.Ram);
+                List<ProccessDetail> cpuUsage = resourcesMonitor.getProccessesHaveRapidChangeUsage(pdArrBefore, pdArrAfter, ResourcesMonitor.UsageCondition.Cpu);
 
-                if (result.Count() > 0)
-                {
-                    lbl_state.Text = " Found";
-                    lbl_state.ForeColor = Color.DarkRed;
+                lb_processRapidChange.DataSource = bothUsage.Select(i => i.process.Id).ToArray();
+                lb_cpuSurge.DataSource = cpuUsage.Select(i => i.process.Id).ToArray();
+                lb_ramSurge.DataSource = ramUsage.Select(i => i.process.Id).ToArray();
 
-                    int[] pidArr = result.Select(i => i.process.Id).ToArray();
-
-                    lb_processRapidChange.DataSource = pidArr;
-                }
-                else
+                if (bothUsage.Count() == 0 && ramUsage.Count() == 0 && cpuUsage.Count() == 0  )
                 {
                     lbl_state.ForeColor = Color.DarkBlue;
                     lbl_state.Text = "No Found";
+                }
+                else
+                {
+                    lbl_state.ForeColor = Color.DarkRed;
+                    lbl_state.Text = "Found";
                 }
 
                 lbl_state.BackColor = lbl_state.BackColor == Color.LightGreen ? Color.LightBlue : Color.LightGreen;

@@ -22,7 +22,7 @@ namespace ResourcesMonitor
 
     class ResourcesMonitor
     { 
-        enum UsageCondition
+        public enum UsageCondition
         {
             Cpu = 0,
             Ram = 1,
@@ -31,7 +31,7 @@ namespace ResourcesMonitor
 
         public ResourcesMonitor() { }
 
-        public List<ProccessDetail> getProccessesHaveRapidChangeUsage(List<ProccessDetail> listBe4, List<ProccessDetail> listAfter)
+        public List<ProccessDetail> getProccessesHaveRapidChangeUsage(List<ProccessDetail> listBe4, List<ProccessDetail> listAfter, UsageCondition uc = UsageCondition.Both)
         {
             List<ProccessDetail> rapidChangeList = new List<ProccessDetail>();
 
@@ -48,8 +48,6 @@ namespace ResourcesMonitor
 
         private bool checkIsProcessHasRepidChangeUsage(ProccessDetail pdBe4, ProccessDetail pdAfter, UsageCondition uc = UsageCondition.Both)
         {
-    
-
             switch(uc)
             {
                 case UsageCondition.Ram: return checkIsRamChange(pdBe4, pdAfter);
