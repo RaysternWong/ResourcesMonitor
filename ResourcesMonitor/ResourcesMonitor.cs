@@ -40,13 +40,13 @@ namespace ResourcesMonitor
                 List<ProccessDetail> be4Items = listBe4.Where(x => x.process.Id == pdAfter.process.Id).ToList();
 
                 if(be4Items.Count() > 0 )
-                    if (checkIsProcessHasRepidChangeUsage(be4Items.First(), pdAfter) == true)
+                    if (checkIsProcessHasRapidChangeUsage(be4Items.First(), pdAfter, uc) == true)
                         rapidChangeList.Add(pdAfter);
             }
             return rapidChangeList;
         }
 
-        private bool checkIsProcessHasRepidChangeUsage(ProccessDetail pdBe4, ProccessDetail pdAfter, UsageCondition uc = UsageCondition.Both)
+        private bool checkIsProcessHasRapidChangeUsage(ProccessDetail pdBe4, ProccessDetail pdAfter, UsageCondition uc = UsageCondition.Both)
         {
             switch(uc)
             {
@@ -59,7 +59,8 @@ namespace ResourcesMonitor
 
         private bool checkIsRamChange(ProccessDetail pdBe4, ProccessDetail pdAfter, int percentChange = 500)
         {
-            pdBe4.ramUsage = (pdBe4.ramUsage == 0 ? 1 : pdBe4.ramUsage); //Assign 1 if the original value is 0, for make it compare-able
+            pdBe4.ramUsage = (pdBe4.ramUsage == 0 ? 1 : pdBe4.ramUsage); //Assign 1 if the original value is 0, for make it no math exception
+            pdAfter.ramUsage = (pdAfter.ramUsage == 0 ? 1 : pdAfter.ramUsage);
 
             if ( pdAfter.ramUsage / pdBe4.ramUsage > (percentChange / 100) )
                 return true;
@@ -68,7 +69,8 @@ namespace ResourcesMonitor
 
         private bool checkIsCpuChange(ProccessDetail pdBe4, ProccessDetail pdAfter, int percentChange = 500)
         {
-            pdBe4.cpuUsage = (pdBe4.cpuUsage == 0 ? 1 : pdBe4.cpuUsage); //Assign 1 if the original value is 0, for make it compare-able
+            pdBe4.cpuUsage = (pdBe4.cpuUsage == 0 ? 1 : pdBe4.cpuUsage); //Assign 1 if the original value is 0, for make it no math exception
+            pdAfter.cpuUsage = (pdAfter.cpuUsage == 0 ? 1 : pdAfter.cpuUsage);
 
             if ( pdAfter.cpuUsage / pdBe4.cpuUsage > (percentChange / 100) )
                 return true;
